@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html style="height:100%" lang="en"><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>EmulatorJS</title>
+<script async="" src="test_data/api.js"></script></head>
+<body style="border:none;margin:0;height: 0;width: 0;">
+<script>
+        window.addEventListener('message', function(e) {
+            if (e.data.act == 'ejs-load-settings') {
+                let system = e.data.system;
+                const settings = localStorage.getItem(`ejs_${system}_settings`);
+                e.source.postMessage({
+                    'act':'ejs-settings',
+                    'settings':settings
+                }, '*');
+            }
+        });
+        
+        window.parent.postMessage({'act':'ejs-test-ready'}, '*');
+        
+    </script>
+<script type="text/javascript">(function(){window['__CF$cv$params']={r:'6fca70b96af8f339',m:'yfXSn62nUkRpUEtWnTHGB1lCWRzDF.in3LEK7fX4HmY-1650086096-0-ASG5cFuEhgVHsnGk/Z0mpUvO1R9ylrHzySoKqDSKQ6KXiBIzz8hkDqTEP4sz41uc4JE3koK894As1/nZb7U8+n6nhkrefeQ+nSsAmk52b8ReHX2gp8AG3F/3/ts52vf0oA==',s:[0x3a21a1d97b,0x894bf49d08],}})();</script>
+</body></html>
